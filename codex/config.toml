@@ -1,0 +1,11 @@
+# ReShare AI for OpenAI Codex CLI. Add to ~/.codex/config.toml, or run:
+#   codex mcp add reshare --url https://www.reshare.ai/api/mcp --bearer-token-env-var RESHARE_API_KEY
+# and export RESHARE_API_KEY=rsk_… (create the key at https://www.reshare.ai/settings/agents). Never paste the key here.
+[mcp_servers.reshare]
+url = "https://www.reshare.ai/api/mcp"
+bearer_token_env_var = "RESHARE_API_KEY"
+startup_timeout_sec = 20
+# publishing uploads the video first: allow the server's full 300 s
+tool_timeout_sec = 300
+# Read-only tools run without asking; tools that change things (start_swap, publish_post, …) ask first.
+default_tools_approval_mode = "writes"

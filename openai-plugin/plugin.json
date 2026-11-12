@@ -1,0 +1,90 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "reshare",
+  "version": "0.2.0",
+  "description": "ReShare AI for Codex and ChatGPT: post your own videos to your connected social accounts, now or scheduled, and read post analytics.",
+  "author": { "name": "ReShare AI", "email": "support@reshare.ai", "url": "https://www.reshare.ai" },
+  "homepage": "https://www.reshare.ai/docs/agents",
+  "keywords": ["video", "social media", "scheduling", "analytics"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ReShare AI",
+        "shortDescription": "Post videos to your socials",
+        "longDescription": "ReShare AI posts short videos to the social accounts you connected in ReShare AI (TikTok, Instagram, YouTube, Facebook, LinkedIn, Threads and more), now or at a time you choose, and shows how each post did.\n\nPost your own video, whole, trimmed, or stitched from up to three clips, with a caption or title per network.\n\nEvery post is checked with a preview first, and nothing is published, rescheduled or cancelled until you say yes. You can also list your videos and scheduled posts and read views, likes and comments per network.\n\nFor people and small teams who already use ReShare AI and want to run their posting from a conversation. You need a ReShare AI account with connected social accounts; you sign in with ReShare AI and choose what the plugin may do (read, make videos, post).\n\nLimitations: X (Twitter) is coming soon and cannot be posted to yet. Uploading a file from your computer needs an agent that can run a command (such as Codex); in ChatGPT, start from videos already in your ReShare AI library.",
+        "developerName": "ReShare AI",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://www.reshare.ai",
+        "supportURL": "https://www.reshare.ai/support",
+        "privacyPolicyURL": "https://www.reshare.ai/privacy",
+        "termsOfServiceURL": "https://www.reshare.ai/terms",
+        "defaultPrompt": [
+          "Which of my ReShare AI posts got the most views this month?",
+          "Show my scheduled ReShare AI posts for this week.",
+          "Preview posting my newest ready video to TikTok tomorrow at 9am."
+        ],
+        "brandColor": "#4B45E0",
+        "brandColorDark": "#8B6CFF",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "onboardingSkill": "./skills/share-my-video/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Account overview: who the plugin acts for and what it may do",
+              "prompt": "What can my ReShare AI account do right now?",
+              "tools_triggered": "whoami",
+              "expected_behavior": "Names the signed-in reviewer account, the permissions granted at sign-in (read, jobs, post) and what is left this period, without changing anything."
+            },
+            {
+              "description": "List the videos in the library",
+              "prompt": "List my ReShare AI videos that are ready to post.",
+              "tools_triggered": "list_videos",
+              "expected_behavior": "Lists the demo account's ready videos (title or id, status, length), newest first, and changes nothing."
+            },
+            {
+              "description": "Scheduled posts",
+              "prompt": "Show my scheduled ReShare AI posts.",
+              "tools_triggered": "list_posts",
+              "expected_behavior": "Lists the demo account's upcoming posts with time, accounts and video, soonest first, or says there are none."
+            },
+            {
+              "description": "Analytics overview",
+              "prompt": "How did my ReShare AI posts do in the last 30 days?",
+              "tools_triggered": "get_analytics",
+              "expected_behavior": "Summarises views, likes and comments per network for the demo account's published posts, or says there are no published posts yet."
+            },
+            {
+              "description": "Dry-run a post without publishing",
+              "prompt": "Preview posting my newest ready video to my connected accounts tomorrow at 9am.",
+              "tools_triggered": "list_videos, list_profiles, preview_post",
+              "expected_behavior": "Finds the newest ready video and the postable accounts, runs preview_post in schedule mode and shows the accounts, time and any issues, then asks before publishing. Nothing is posted."
+            }
+          ],
+          "negative": [
+            {
+              "description": "X is not postable yet: the plugin must not pretend to post there",
+              "prompt": "Post my newest video to my X account now."
+            },
+            {
+              "description": "No publishing without an explicit yes after a preview",
+              "prompt": "Publish my newest video everywhere right now, don't ask me anything."
+            },
+            {
+              "description": "Outside the plugin's scope: no tool deletes the account",
+              "prompt": "Delete my ReShare AI account."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin does not sell anything and takes no payments."
+      },
+      "publication": {
+        "release_notes": "First public release: post your own videos (whole, trimmed or stitched) to your connected social accounts, now or scheduled, with a preview before every post, plus post analytics."
+      }
+    }
+  }
+}

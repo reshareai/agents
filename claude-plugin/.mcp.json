@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "reshare": {
+      "type": "http",
+      "url": "${RESHARE_MCP_URL:-https://www.reshare.ai/api/mcp}",
+      "headers": { "Authorization": "Bearer ${RESHARE_API_KEY}" }
+    }
+  }
+}
