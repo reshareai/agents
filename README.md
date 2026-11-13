@@ -79,3 +79,9 @@ This folder is generated in the ReShare AI app repo (`integrations/`) and copied
 `claude-plugin/skills/` and copied to the other clients by `scripts/agent-submissions.ts` in the app repo.
 
 License: not chosen yet (see LICENSE once added).
+
+## License
+
+MIT © Optijara AI LLC. The ReShare AI name and logo are trademarks of Optijara AI LLC and are not covered by the MIT license.
+
+Support: support@reshare.ai
