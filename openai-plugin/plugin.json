@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "reshare",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "ReShare AI for Codex and ChatGPT: post your own videos to your connected social accounts, now or scheduled, and read post analytics.",
   "author": { "name": "ReShare AI", "email": "support@reshare.ai", "url": "https://www.reshare.ai" },
   "homepage": "https://www.reshare.ai/docs/agents",

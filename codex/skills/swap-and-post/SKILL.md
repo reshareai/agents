@@ -18,6 +18,7 @@ Uses the `reshare` MCP tools. Everything runs as the user's ReShare AI account a
 5. **Wait.** Poll `get_video` every 20–30 s until `ready` (about 8 minutes; `remaining_seconds` is an estimate) or `failed` (show `error`).
 6. **Post.**
    - `list_profiles`; pick account ids with `postable: true` (X is coming soon and cannot be posted to yet).
+   - For TikTok, ask the user who can view it: the account's `tiktok.privacy_level_options` from `list_profiles` (e.g. `PUBLIC_TO_EVERYONE` everyone, `MUTUAL_FOLLOW_FRIENDS` friends, `FOLLOWER_OF_CREATOR` followers, `SELF_ONLY` only me), passed as `tiktok.privacy_level`. TikTok requires the user's own choice: never pick one for them, not even everyone. Optional: `tiktok.disable_comment`, `tiktok.disable_duet` or `tiktok.disable_stitch`, or `tiktok.post_mode: "MEDIA_UPLOAD"` to send it to their TikTok inbox instead.
    - Draft a caption with the user. Call `preview_post` with the video, profile, accounts, caption and mode (`now`, `schedule` with `scheduled_at` `YYYY-MM-DDTHH:mm` + `timezone`, or `queue`).
    - Show the preview: accounts, time, issues, `posts_needed` / `posts_left`. Fix any `level: "error"` issue first.
    - Only after the user clearly says yes: `publish_post` with the same arguments, `confirm: true` and a fresh `idempotency_key` (e.g. a UUID). Reuse that key only to repeat a call that got no answer (timeout); a post that came back `failed` needs a new key.

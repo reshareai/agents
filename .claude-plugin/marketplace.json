@@ -7,7 +7,7 @@
       "name": "reshare",
       "source": "./claude-plugin",
       "description": "Post your own videos or AI character swaps to your socials, now or scheduled, and read analytics.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "homepage": "https://www.reshare.ai/docs/agents"
     }
   ]
