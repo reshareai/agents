@@ -1,4 +1,10 @@
+<p align="center">
+  <img src="https://www.reshare.ai/brand/logo/icon-512.png" alt="ReShare AI logo" width="128" height="128">
+</p>
+
 # ReShare AI for AI agents
+
+[![MCP Badge](https://lobehub.com/badge/mcp/reshareai-agents)](https://lobehub.com/mcp/reshareai-agents)
 
 Connect [ReShare AI](https://www.reshare.ai) to your AI agent and run both modes from a conversation:
 
@@ -11,6 +17,52 @@ Everything goes through one remote MCP server: **`https://www.reshare.ai/api/mcp
 package (`openai-plugin/`) uses its Sharing-only endpoint **`https://www.reshare.ai/api/mcp/sharing`** (no AI swap tools,
 no plan offers). Full guide and
 tool list: https://www.reshare.ai/docs/agents.
+
+## Tools / Prompts / Resources
+
+Anyone can see what the server offers, without signing in, at **`https://www.reshare.ai/api/mcp/public`**:
+`initialize`, `tools/list`, `prompts/list` and `resources/list` answer with names, descriptions and input schemas only.
+Every tool call, prompt and resource read needs a credential: on `/api/mcp/public` a personal API key
+(`Authorization: Bearer rsk_…`); on `/api/mcp` and `/api/mcp/sharing` an API key or OAuth sign-in (below).
+
+<!-- capabilities:start -->
+Generated from `lib/agent/catalog.ts` (server version 0.4.0) by `scripts/agent-submissions.ts`. Do not edit by hand.
+
+### Tools (21)
+
+- `whoami`: Who am I (read-only)
+- `list_characters`: List characters (read-only) *(not on /api/mcp/sharing)*
+- `list_profiles`: List profiles and accounts (read-only)
+- `list_videos`: List videos (read-only)
+- `get_video`: Get a video (read-only)
+- `get_upload`: Get an upload or link (read-only)
+- `list_posts`: List posts (read-only)
+- `get_post`: Get a post (read-only)
+- `get_usage`: Get usage (read-only)
+- `get_analytics`: Post analytics overview (read-only)
+- `get_post_analytics`: Analytics for one post (read-only)
+- `create_upload`: Start a video upload
+- `commit_upload`: Finish a video upload
+- `add_video_link`: Add a reel link *(not on /api/mcp/sharing)*
+- `start_swap`: Start an AI character swap *(not on /api/mcp/sharing)*
+- `use_own_video`: Make a postable video from your upload
+- `stitch_videos`: Join up to 3 clips into one video
+- `preview_post`: Preview a post (dry run) (read-only)
+- `publish_post`: Publish or schedule a post
+- `reschedule_post`: Reschedule or edit a scheduled post
+- `cancel_post`: Cancel a scheduled post
+
+### Prompts (3)
+
+- `swap_character_into_reel` (video_url, character): Swap one of your AI characters into a public reel link, then show the result when it is ready. *(not on /api/mcp/sharing)*
+- `post_video_everywhere` (video, when?): Preview a ready video on every connected account that can post, then publish it now or at a time once you say yes.
+- `weekly_analytics_summary`: Summarise how your posts did over the last 7 days: views, likes and comments per network, the best post and the best time to post.
+
+### Resources (2)
+
+- `reshare://docs/getting-started` (text/markdown): How to connect (OAuth or an API key), the usual flows, and what each tool does.
+- `reshare://plans` (application/json): The public plans and their monthly limits (posts, uploads, AI credits, profiles), as on the pricing page. *(not on /api/mcp/sharing)*
+<!-- capabilities:end -->
 
 ## Sign in
 
@@ -77,8 +129,6 @@ Help: https://www.reshare.ai/support · Privacy: https://www.reshare.ai/privacy 
 
 This folder is generated in the ReShare AI app repo (`integrations/`) and copied here as is. Skills are edited in
 `claude-plugin/skills/` and copied to the other clients by `scripts/agent-submissions.ts` in the app repo.
-
-License: not chosen yet (see LICENSE once added).
 
 ## License
 

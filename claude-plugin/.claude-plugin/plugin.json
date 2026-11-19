@@ -7,6 +7,7 @@
     "url": "https://www.reshare.ai"
   },
   "homepage": "https://www.reshare.ai/docs/agents",
+  "license": "MIT",
   "privacyPolicyUrl": "https://www.reshare.ai/privacy",
   "keywords": [
     "video",
