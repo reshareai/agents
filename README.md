@@ -18,6 +18,30 @@ package (`openai-plugin/`) uses its Sharing-only endpoint **`https://www.reshare
 no plan offers). Full guide and
 tool list: https://www.reshare.ai/docs/agents.
 
+## Connect
+
+**Any MCP client with an API key** (Cursor, VS Code, Windsurf, Claude Code, scripts): the Streamable HTTP server
+`https://www.reshare.ai/api/mcp/public`. Tool calls need your personal API key in the `Authorization` header; create
+one at https://www.reshare.ai/settings/agents and keep it in the `RESHARE_API_KEY` environment variable.
+
+```json
+{
+  "mcpServers": {
+    "reshare": {
+      "type": "http",
+      "url": "https://www.reshare.ai/api/mcp/public",
+      "headers": { "Authorization": "Bearer ${RESHARE_API_KEY}" }
+    }
+  }
+}
+```
+
+**claude.ai, Claude Desktop and ChatGPT** use `https://www.reshare.ai/api/mcp` instead and sign in with your ReShare AI
+account (OAuth): add a custom connector with that URL. No API key is needed there.
+
+The `.mcp.json` at the root of this repo points at `https://www.reshare.ai/api/mcp/public` without a key, so anyone can
+list the tools; add your key as an Authorization header for tool calls.
+
 ## Tools / Prompts / Resources
 
 Anyone can see what the server offers, without signing in, at **`https://www.reshare.ai/api/mcp/public`**:
@@ -82,6 +106,7 @@ Every post is previewed first (`preview_post`) and published only with `confirm:
 | `.agents/plugins/marketplace.json` | Codex plugin marketplace (`codex plugin marketplace add reshareai/agents`) |
 | `openai-plugin/` | Agent Plugins package for Codex and the ChatGPT/Codex plugin directory: MCP server with OAuth + skills |
 | `codex/` | Codex CLI with an API key: `config.toml`, `AGENTS.md`, skills for `~/.agents/skills` |
+| `.mcp.json` | The server at `/api/mcp/public` with no key, for scanners and listing the tools; add your key as an Authorization header for tool calls |
 | `server.json` | The listing for the official MCP Registry (`ai.reshare/reshare`) |
 
 Skills (the same text in every client): `share-my-video`, `swap-and-post`, `schedule-week`, `check-analytics` (the OpenAI package leaves out `swap-and-post`).
