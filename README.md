@@ -103,13 +103,15 @@ Every post is previewed first (`preview_post`) and published only with `confirm:
 |---|---|
 | `.claude-plugin/marketplace.json` | Claude Code plugin marketplace (`/plugin marketplace add reshareai/agents`) |
 | `claude-plugin/` | Claude Code plugin: the MCP server (API key from `RESHARE_API_KEY`) + skills |
+| `claude-directory-plugin/` | Claude Code plugin `reshare-sharing` (the Claude plugin directory listing): the Sharing-only server `/api/mcp/sharing` with sign-in (OAuth), no swap skill |
 | `.agents/plugins/marketplace.json` | Codex plugin marketplace (`codex plugin marketplace add reshareai/agents`) |
 | `openai-plugin/` | Agent Plugins package for Codex and the ChatGPT/Codex plugin directory: MCP server with OAuth + skills |
 | `codex/` | Codex CLI with an API key: `config.toml`, `AGENTS.md`, skills for `~/.agents/skills` |
 | `.mcp.json` | The server at `/api/mcp/public` with no key, for scanners and listing the tools; add your key as an Authorization header for tool calls |
 | `server.json` | The listing for the official MCP Registry (`ai.reshare/reshare`) |
+| `LICENSE` | MIT licence; it covers only the integration files in this repo (manifests, skills, READMEs), not ReShare AI's app or service code |
 
-Skills (the same text in every client): `share-my-video`, `swap-and-post`, `schedule-week`, `check-analytics` (the OpenAI package leaves out `swap-and-post`).
+Skills (the same text in every client): `share-my-video`, `swap-and-post`, `schedule-week`, `check-analytics` (the OpenAI package and `claude-directory-plugin` leave out `swap-and-post`).
 
 ## Install
 
@@ -119,6 +121,14 @@ Skills (the same text in every client): `share-my-video`, `swap-and-post`, `sche
 export RESHARE_API_KEY=rsk_…
 /plugin marketplace add reshareai/agents
 /plugin install reshare@reshare
+```
+
+**Claude Code (plugin, sign in, sharing only)**: `reshare-sharing` signs in with your ReShare AI account (run `/mcp`
+after installing), no key needed. It posts and schedules your own videos and reads analytics.
+
+```
+/plugin marketplace add reshareai/agents
+/plugin install reshare-sharing@reshare
 ```
 
 **Claude Code (server only)**

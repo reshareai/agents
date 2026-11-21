@@ -9,6 +9,13 @@
       "description": "Post your own videos or AI character swaps to your socials, now or scheduled, and read analytics.",
       "version": "0.3.0",
       "homepage": "https://www.reshare.ai/docs/agents"
+    },
+    {
+      "name": "reshare-sharing",
+      "source": "./claude-directory-plugin",
+      "description": "Post your own videos to TikTok, Instagram, YouTube and more, now or on a schedule, and read how they did. Signs in with your ReShare AI account.",
+      "version": "0.3.0",
+      "homepage": "https://www.reshare.ai/docs/agents"
     }
   ]
 }

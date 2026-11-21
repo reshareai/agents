@@ -1,0 +1,20 @@
+{
+  "name": "reshare-sharing",
+  "displayName": "ReShare AI",
+  "version": "0.3.0",
+  "description": "ReShare AI: post your own videos to TikTok, Instagram, YouTube and more, now or on a schedule, and read how they did.",
+  "author": {
+    "name": "ReShare AI",
+    "url": "https://www.reshare.ai"
+  },
+  "homepage": "https://www.reshare.ai/docs/agents",
+  "license": "MIT",
+  "privacyPolicyUrl": "https://www.reshare.ai/privacy",
+  "keywords": [
+    "video",
+    "social",
+    "scheduling",
+    "analytics",
+    "mcp"
+  ]
+}

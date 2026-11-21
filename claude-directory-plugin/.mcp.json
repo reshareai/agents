@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "reshare": {
+      "type": "http",
+      "url": "https://www.reshare.ai/api/mcp/sharing"
+    }
+  }
+}
