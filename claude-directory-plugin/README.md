@@ -14,5 +14,10 @@ Claude Code. Skills: `share-my-video`, `schedule-week`, `check-analytics`.
 
 Every post is shown as a preview first, and nothing is published, rescheduled or cancelled until you say yes.
 
-The plugin connects to `https://www.reshare.ai/api/mcp/sharing`. Docs: https://www.reshare.ai/docs/agents. Privacy:
-https://www.reshare.ai/privacy. MIT licence (see `LICENSE`).
+The plugin connects to the ReShare AI server at https://www.reshare.ai/api/mcp/sharing
+
+Docs: https://www.reshare.ai/docs/agents
+
+Privacy: https://www.reshare.ai/privacy
+
+MIT licence (see the LICENSE file).
